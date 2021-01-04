@@ -1,0 +1,13 @@
+
+server:
+  port: 1111
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/,http://localhost:2222/eureka/
+spring:
+  application:
+    name: eureka-server
