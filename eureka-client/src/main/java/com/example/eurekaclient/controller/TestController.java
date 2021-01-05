@@ -18,6 +18,14 @@ public class TestController {
 
     @GetMapping("/client/{id}")
     public String feignTest(@PathVariable("id") Integer id){
+        // 模拟异常
+        //System.out.println(1/0);
+        // 模拟超时
+        //try {
+        //    Thread.sleep(3000);
+        //} catch (InterruptedException e) {
+        //    e.printStackTrace();
+        //}
         return "test:" + port + ":" + id;
     }
 }

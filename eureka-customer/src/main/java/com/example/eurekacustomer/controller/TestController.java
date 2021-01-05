@@ -2,6 +2,7 @@ package com.example.eurekacustomer.controller;
 
 
 import com.example.eurekacustomer.client.CustomerClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -32,8 +33,13 @@ public class TestController {
         return restTemplate.getForObject(url,String.class);
     }
 
+    @HystrixCommand(fallbackMethod = "fallBack")
     @GetMapping("/customer/client/{id}")
     public String feignTest(@PathVariable("id") Integer id){
         return customerClient.feignTest(id);
+    }
+
+    public String fallBack(@PathVariable("id") Integer id){
+        return "error" + id;
     }
 }
