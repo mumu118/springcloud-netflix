@@ -51,6 +51,7 @@ public class TestController {
         //    int i = 1/0;
         //    return "error";
         //}
+        System.out.println("test");
         //return customerClient.feignTest(id);
         testService.remove(id);
         System.out.println(testService.feignTest(id));
