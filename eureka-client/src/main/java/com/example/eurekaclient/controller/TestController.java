@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 public class TestController {
 
@@ -26,6 +28,7 @@ public class TestController {
         //} catch (InterruptedException e) {
         //    e.printStackTrace();
         //}
-        return "test:" + port + ":" + id;
+        //return "test:" + port + ":" + id;
+        return UUID.randomUUID().toString();
     }
 }

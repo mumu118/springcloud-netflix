@@ -20,7 +20,10 @@ eureka-client: #被调用微服务
 feign:
   hystrix:
     enabled: true
+# hystrix线程池配置
 hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"
   command:
     default:
       execution:
@@ -28,5 +31,6 @@ hystrix:
           thread:
             timeoutInMilliseconds: 2000 #设置超时时长
       circuitBreaker:
-        requestVolumeThreshold: 5   #  10秒种访问5次都失败的话, 会断开服务,不调用方法,直接进入fallback
+        requestVolumeThreshold: 6   #  10秒种访问5次都失败的话, 会断开服务,不调用方法,直接进入fallback
         sleepWindowInMilliseconds : 5000   #默认是5秒 5秒后尝试再访问一次服务器
+        errorThresholdPercentage: 50 #失败百分比
