@@ -3,7 +3,6 @@ package com.example.eurekacustomer.controller;
 
 import com.example.eurekacustomer.client.CustomerClient;
 import com.example.eurekacustomer.service.TestService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
