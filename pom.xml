@@ -19,6 +19,7 @@
         <module>eureka</module>
         <module>eureka-client</module>
         <module>eureka-customer</module>
+        <module>zuul</module>
     </modules>
 
     <properties>
