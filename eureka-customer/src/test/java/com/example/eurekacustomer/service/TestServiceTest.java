@@ -22,4 +22,25 @@ class TestServiceTest {
         List<String> lesseedifFieldNames = lesseeFieldInfos.stream().map(FieldInfo::getFieldName).collect(Collectors.toList());
         System.out.println(lesseeFieldInfos);
     }
+
+    @Test
+    public void test2(){
+
+        int[] array = new int[]{1,5,8,2};
+        int target = 10;
+
+        int index = 0;
+        int sum = 0;
+        for (int i = 0;i< array.length;i++){
+            for (int j = i;j< array.length;j++){
+                sum = sum + array[j];
+                if (sum == target){
+                    index = j;
+                    return;
+                }
+            }
+            sum = 0;
+        }
+        System.out.println(index);
+    }
 }
