@@ -13,3 +13,23 @@ spring:
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
+# 查看zuul监控  http://localhost:1221/actuator/routes
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+zuul:
+  # 基于服务名忽略 “*”忽略全部路径
+  ignored-services: "*"
+  # 监控页面能看到，访问时404
+  # ignored-patterns: /**/eureka-customer/**
+
+  # 自定义
+  routes:
+    # 方式1 服务名：path
+    # eureka-customer: cc/**
+    # 方式2
+    kehu:
+      path: /ccc/** #指定路径
+      serviceId: eureka-customer # 服务名
