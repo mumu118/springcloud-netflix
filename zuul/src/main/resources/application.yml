@@ -13,23 +13,32 @@ spring:
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
-# ²é¿´zuul¼à¿Ø  http://localhost:1221/actuator/routes
+# æŸ¥çœ‹zuulç›‘æ§  http://localhost:1221/actuator/routes
 management:
   endpoints:
     web:
       exposure:
         include: "*"
 zuul:
-  # »ùÓÚ·şÎñÃûºöÂÔ ¡°*¡±ºöÂÔÈ«²¿Â·¾¶
-  ignored-services: "*"
-  # ¼à¿ØÒ³ÃæÄÜ¿´µ½£¬·ÃÎÊÊ±404
+  # åŸºäºæœåŠ¡åå¿½ç•¥ â€œ*â€å¿½ç•¥å…¨éƒ¨è·¯å¾„
+  #ignored-services: "*"
+  ignored-services: eureka-customer
+  # ç›‘æ§é¡µé¢èƒ½çœ‹åˆ°ï¼Œè®¿é—®æ—¶404
   # ignored-patterns: /**/eureka-customer/**
 
-  # ×Ô¶¨Òå
-  routes:
-    # ·½Ê½1 ·şÎñÃû£ºpath
-    # eureka-customer: cc/**
-    # ·½Ê½2
-    kehu:
-      path: /ccc/** #Ö¸¶¨Â·¾¶
-      serviceId: eureka-customer # ·şÎñÃû
+  # è‡ªå®šä¹‰
+#  routes:
+#    # æ–¹å¼1 æœåŠ¡åï¼špath
+#    # eureka-customer: cc/**
+#    # æ–¹å¼2
+#    kehu:
+#      path: /ccc/** #æŒ‡å®šè·¯å¾„
+#      serviceId: eureka-customer # æœåŠ¡å
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000 #è®¾ç½®è¶…æ—¶æ—¶é•¿
+

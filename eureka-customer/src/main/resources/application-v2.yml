@@ -1,5 +1,5 @@
 server:
-  port: 1122
+  port: 2211
 
 eureka:
   instance:
@@ -9,7 +9,7 @@ eureka:
       defaultZone: http://root:root@localhost:1111/eureka/,http://root:root@localhost:2222/eureka/
 spring:
   application:
-    name: eureka-customer
+    name: eureka-customer-v2
 eureka-client: #被调用微服务
   ribbon:
     # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #配置规则 随机

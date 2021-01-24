@@ -4,6 +4,7 @@ package com.example.eurekacustomer.controller;
 import com.example.eurekacustomer.client.CustomerClient;
 import com.example.eurekacustomer.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,9 @@ public class TestController {
 
     @Autowired
     private TestService testService;
+
+    @Value("${server.port}")
+    private String port;
 
     @GetMapping("/customer/test")
     public String test(){
@@ -68,5 +72,12 @@ public class TestController {
      */
     public String fallBack(@PathVariable("id") Integer id){
         return "error" + id;
+    }
+
+    @GetMapping("version")
+    public String versionTest() throws InterruptedException {
+        // Thread.sleep(3000);
+        int i = 1/0;
+        return port;
     }
 }
